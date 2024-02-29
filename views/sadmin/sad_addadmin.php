@@ -28,27 +28,27 @@
                     <tr>
                         <td>Name</td>
                         <td>:</td>
-                        <td><input type="text" name="name" placeholder="Admin Name..."></td>
+                        <td><input type="text" name="name" placeholder="Admin Name..." required></td>
                     </tr>
                     <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type="text" name="username" placeholder="Username..."></td>
+                        <td><input type="text" name="username" placeholder="Username..." required></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type="text" name="password" placeholder="Password..."></td>
+                        <td><input type="text" name="password" placeholder="Password..." required></td>
                     </tr>
                     <tr>
                         <td>Confirm Password</td>
                         <td>:</td>
-                        <td><input type="text" name="con_password" placeholder="Confirm password..."></td>
+                        <td><input type="text" name="con_password" placeholder="Confirm password..." required></td>
                     </tr>
                 </table>
                 <center>
                     <button class="btn btn-warning" name="add">Add</button>
-                    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-secondary">Back</a>
+                    <a href="sad_admin.php" class="btn btn-secondary">Back</a>
 
                 </center>
                 </form>

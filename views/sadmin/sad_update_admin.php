@@ -22,7 +22,7 @@
 
 <?php
     $query = mysqli_query($con,"SELECT * FROM admin WHERE id_admin=".$_GET['id']);
-    while($data = mysqli_fetch_array($query)):
+    while($data = mysqli_fetch_assoc($query)){
 ?>
 
 
@@ -34,12 +34,12 @@
                     <tr>
                         <td>Name</td>
                         <td>:</td>
-                        <td><input type="text" name="name" placeholder="Admin Name..." value="<?php echo $data['admin_name'] ?>"></td>
+                        <td><input type="text" name="name" placeholder="Admin Name..." value="<?php echo $data['admin_name']; ?>"></td>
                     </tr>
                     <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type="text" name="username" placeholder="Username..." value="<?php echo $data['username'] ?>"></td>
+                        <td><input type="text" name="username" placeholder="Username..." value="<?php echo $data['username']; ?>"></td>
                     </tr>
                     <tr>
                         <td>Password</td>
@@ -54,7 +54,7 @@
                 </table>
                 <center>
                     <button class="btn btn-warning" name="update">Update</button>
-                    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="btn btn-secondary">Back</a>
+                    <a href="sad_admin.php" class="btn btn-secondary">Back</a>
 
                 </center>
                 </form>
@@ -62,7 +62,7 @@
         </div>
     </div>
     <?php
-    endwhile;
+    }
     
     if (isset($_POST['update'])):
             $name = $_POST['name'];
@@ -78,7 +78,7 @@
                 if (!$insert) {
                     die("Query failed: " . mysqli_error($con));
                 } else {
-                    echo "<script> alert('The admin profile has been created.'); 
+                    echo "<script> alert('The admin profile has been updated.'); 
                     window.location='sad_admin.php'; </script>";
                     exit; // Stop further execution
                 }

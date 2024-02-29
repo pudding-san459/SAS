@@ -44,7 +44,7 @@
     <td><?php echo $data['admin_name'] ?></td>
     <td><?php echo $data['username'] ?></td>
     <td><?php echo $data['password'] ?></td>
-    <td><a href="sad_addadmin.php?id=<?php echo $data['id_admin']; ?>" class="btn btn-warning">Update</a></td>
+    <td><a href="sad_update_admin.php?id=<?php echo $data['id_admin']; ?>" class="btn btn-warning">Update</a></td>
     <form action="sad_delete.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_admin'] ?>" name="idadmin">
       <td><button class="btn btn-danger" name="del_admin">Delete</button></td>
