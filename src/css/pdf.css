@@ -1,0 +1,98 @@
+body{
+    background-color: #fff;
+}
+
+@page {
+    margin: 0mm;
+    margin-header: 0mm;
+    margin-footer: 0mm;
+}
+
+.boxa {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 21cm; /* A4 width in centimeters */
+    height: 29.7cm; /* A4 height in centimeters */
+    margin: auto;
+}
+
+.address{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 50%;
+    word-wrap: break-word;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.customer{
+    text-align: end; 
+    margin-right: 3%; 
+    font-weight: 500;
+}
+
+.logo{
+    height: 120px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.company{
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.tel{
+    text-align: center;
+    margin-top:0;
+}
+
+.invoice{
+    font-weight: 1000; 
+    font-size: 45px; 
+    margin: 10px;
+    text-align: center;
+}
+
+.table-1{
+    border-spacing: 0; 
+    margin-left: 5%; 
+
+    
+}
+
+.td1{
+    width: 60%; 
+    padding: 0; 
+    vertical-align: top;
+}
+
+.pad0mar0{
+    padding: 0; 
+    margin:0;
+}
+
+.padwb{
+    padding: 0; 
+    margin:0; 
+    width: 200px; 
+    word-wrap: break-word;
+}
+
+.pad0{
+    padding: 0;
+}
+
+.butang{
+    background-color: lightblue;
+    color: black;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}

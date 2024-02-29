@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+body {
+    background-color: white;
+    font-family: "Nunito", sans-serif;
+    place-content: center;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #dbe1e8;
+    padding: 2vh;
+    border-radius: 1rem;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  nav ul li .nav-link {
+    font-size: 1.2rem;
+    color: #000;
+  }
+  
+  nav ul li .nav-link:hover {
+    color: #0460bc;
+    transition: all 0.3s;
+  }
+  
+  li.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0460bc;
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid #0460bc;
+  }
+  
+  .logout {
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3ccd7;
+    padding: 0.4em 0.8em;
+    cursor: pointer;
+    gap: 0.4em;
+    border-radius: 0.4em;
+    color: red;
+    font-size: 1rem;
+  }
+  
+  .logout p {
+    margin: 0;
+  }
+  
+  .logout:hover {
+    color: #fff;
+    background-color: #0460bc;
+  }
+
+  .general{
+    width: 90%;
+    text-align: center;
+    border: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ledger{
+    width: 80%;
+    text-align: center;
+    border: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aging{
+    width: 92%;
+    border: black 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-end{
+    text-align: end;
+  }
+
+  .title{
+    background-color: #DCEEF2;
+    padding: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    width: 80%;
+  }
+
+  .main-button2{
+    padding: 20px; 
+    width: 80%;
+  }
+
+  .main-button-div{
+    border:2px solid black;
+    padding:20px;
+    width: 250px;
+    height: auto;
+  }
+
+  .info-user{
+    text-align: start;
+    border: 2px solid black;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+
+  .inv-card .card{
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 1px 1px 8px 0 grey;
+    height: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inv-card .card .card-body{
+    text-align: center;
+  }
+
+  .inv-card .card .card-body p{
+    margin: 10px;
+  }
+
+  div .butang {
+    background-color: lightblue;
+    text-align: center;
+  }
+  
