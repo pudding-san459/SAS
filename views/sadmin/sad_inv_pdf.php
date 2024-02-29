@@ -128,7 +128,7 @@
 <body>
 
 <br><br>
-<form action="generate_pdf.php" method="post">
+<form action="inc/generate_invoice.php" method="post">
 <div class="boxa">
     <p class="customer">CUSTOMER'S COPY</p>
     <img class="logo" src="../../img/Picture1.jpg">

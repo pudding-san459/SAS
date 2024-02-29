@@ -341,9 +341,9 @@ if (isset($_POST['submit'])) {
     $query = mysqli_query($con, "INSERT INTO debt VALUES ('$newId','$compName','$desc','$subTotal', '$subTotal','$date','$terms','$dueDate','CURRENT')");
 
     if($query){
-        echo '<script> alert("The invoice have been saved."); window.location="sad_main.php"; </script>';
+        echo '<script> alert("The invoice have been saved."); window.location="../sad_main.php"; </script>';
     } else{
-        echo '<script> alert("There\'s an error."); window.location="sad_main.php"; </script>';
+        echo '<script> alert("There\'s an error."); window.location="../sad_main.php"; </script>';
     }
 }
 
