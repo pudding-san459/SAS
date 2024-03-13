@@ -28,16 +28,16 @@
     $existingCompanies[] = $row['debt_name'];
   }
 
-  $query = "SELECT DISTINCT debt_invoice FROM debt";
+  $query = "SELECT DISTINCT debt_invoice FROM debt WHERE status IN ('CURRENT', 'PASS DUE')";
   $result = mysqli_query($con, $query);
-
+  
   $existingInvoice = array();
   while ($row = mysqli_fetch_assoc($result)) {
     $existingInvoice[] = $row['debt_invoice'];
   }
 ?>
 
-<form action="sad_pdf.php" method="POST">
+<form action="sad_pay_pdf.php" method="POST">
 <div class="inv-card">
   <div class="card" style="width: 50%;">
     <div class="card-body">

@@ -19,6 +19,17 @@ body{
     margin: auto;
 }
 
+.boxb {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 21cm; /* A4 width in centimeters */
+    height: 10cm; /* A4 height in centimeters */
+    margin: auto;
+}
+
 .address{
     margin-left: auto;
     margin-right: auto;

@@ -21,7 +21,7 @@
 
 <center>
   <div class="" style=" margin-bottom: 5vh;">
-    <a href="?status=complete" class="btn" style="background-color: lightblue;">Complete</a>
+    <a href="?status=completed" class="btn" style="background-color: lightblue;">Completed</a>
     <a href="?status=current" class="btn" style="background-color: lightgreen;">Current</a>
     <a href="?status=pass due" class="btn" style="background-color: salmon;">Pass Due</a>
   </div>
@@ -44,14 +44,14 @@
   $filter = '';
   if (isset($_GET['status'])) {
   $status = $_GET['status'];
-  if ($status === 'complete' || $status === 'current' || $status === 'pass due') {
+  if ($status === 'completed' || $status === 'current' || $status === 'pass due') {
     $filter = "WHERE status = '$status'";
   }
   }
 
   $tempTotal = 0;
   $grandTotal = 0;
-  $order = 'CASE WHEN status = "PASS DUE" THEN 1 WHEN status = "CURRENT" THEN 2 WHEN status = "COMPLETE" THEN 3 ELSE 4 END, status';
+  $order = 'CASE WHEN status = "PASS DUE" THEN 1 WHEN status = "CURRENT" THEN 2 WHEN status = "COMPLETED" THEN 3 ELSE 4 END, status';
   $query = mysqli_query($con, "SELECT * FROM debt $filter ORDER BY $order");
   while ($data = mysqli_fetch_array($query)) {
     
@@ -67,7 +67,7 @@
         case 'PASS DUE':
             $backgroundColor = 'salmon';
             break;
-        case 'COMPLETE':
+        case 'COMPLETED':
             $backgroundColor = 'lightblue';
             break;
         default:
