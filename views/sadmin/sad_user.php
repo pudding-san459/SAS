@@ -1,5 +1,13 @@
 <?php
     include('sad_header.php');
+
+    session_start(); // Starting the session
+
+    // Check if the user is not logged in, redirect to the login page
+    if (!isset($_SESSION['admin_name'])) {
+        header("Location: ../ad_login.php");
+        exit(); // Ensure script stops here
+    }
 ?>
 
 <header>
@@ -11,9 +19,9 @@
       <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">USER MENU</h3>
@@ -51,11 +59,11 @@
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="id">
       <td><button type="submit" name="approve" class="btn btn-success">Approve</button></td>
     </form>
-    <form action="sad_reject.php" method="POST">
+    <form action="inc/reject.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="id">
       <td><button type="submit" name="uppage" class="btn btn-danger">Reject</button></td>
     </form>
-    <form action="sad_delete.php" method="POST">
+    <form action="inc/delete.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="iduser">
       <td><button class="btn btn-dark" name="del_user">Delete</button></td>
     </form>

@@ -1,5 +1,6 @@
 <?php
   include "../src/header.php";
+  session_start();
 ?>
 <title>Admin Login</title>
   <div class="card" style="border: 0px;">
@@ -41,7 +42,7 @@
           $_SESSION['admin_name'] = $data['admin_name'];
           $privilage = $data['privilage'];
 
-          if ($privilage == 1) {
+          if ($privilage == 1)  {
             echo "<script> alert('Login Successful!'); </script>";
             echo "<script> window.location='admin/ad_main.php'; </script>";
             exit();

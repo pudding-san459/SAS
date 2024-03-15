@@ -1,5 +1,13 @@
 <?php
     include('sad_header.php');
+
+    session_start(); // Starting the session
+
+    // Check if the user is not logged in, redirect to the login page
+    if (!isset($_SESSION['admin_name'])) {
+        header("Location: ../ad_login.php");
+        exit(); // Ensure script stops here
+    }
 ?>
 
 <?php
@@ -21,29 +29,30 @@
       <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">DEBTORS LEDGER</h3>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <center>
-    <input type="text" name="company" class="form-select" id="comp_name" list="companyList" style="width:80%;" placeholder="Type or Select Company" value="<?php if (isset($_GET['company'])) { $company = $_GET['company']; echo $company; }  ?>" required>
-    <datalist id="companyList" size="5">
-      <?php
-      // Iterate over existing company names and populate the datalist
-      foreach ($existingCompanies as $company) {
-          echo '<option value="' . $company . '">';
-      }
-      ?>
-    </datalist>
-    <br>
-  <a href="?company=<?php echo $company; ?>" class="btn btn-primary">Submit</a>
+    <form method="get" action="sad_ledger.php">
+        <input type="text" name="company" class="form-select" id="comp_name" list="companyList" style="width:80%;" placeholder="Type or Select Company" value="<?php echo isset($_GET['company']) ? htmlspecialchars($_GET['company']) : ''; ?>" required>
+        <datalist id="companyList" size="5">
+            <?php
+            // Iterate over existing company names and populate the datalist
+            foreach ($existingCompanies as $companyOption) {
+                echo '<option value="' . htmlspecialchars($companyOption) . '">';
+            }
+            ?>
+        </datalist>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </center>
 <br>
-
 <table class="table table-bordered ledger">
   <tr style="background-color: #00F7FF;">
     <th style="width: 120px;">Date</th>
@@ -54,34 +63,32 @@
   </tr>
   <?php
     if (isset($_GET['company'])) {
-      $selectedCompany = mysqli_real_escape_string($con, $_GET['company']);
+        $selectedCompany = mysqli_real_escape_string($con, $_GET['company']);
     } else {
-      $selectedCompany = ""; // Initialize $company to prevent errors
+        $selectedCompany = ""; // Initialize $selectedCompany to prevent errors
     }
-    
     if (!empty($selectedCompany)) {
+        // Fetch debt data
+        $debt_query = mysqli_query($con, "SELECT * FROM debt WHERE debt_name = '$selectedCompany'");
+        $debt_rows = mysqli_fetch_all($debt_query, MYSQLI_ASSOC);
     
-    // Fetch debt data
-    $debt_query = mysqli_query($con, "SELECT * FROM debt WHERE debt_name = '$selectedCompany'");
-    $debt_rows = mysqli_fetch_all($debt_query, MYSQLI_ASSOC);
+        // Fetch credit data
+        $credit_query = mysqli_query($con, "SELECT * FROM credit WHERE debt_name = '$selectedCompany'");
+        $credit_rows = mysqli_fetch_all($credit_query, MYSQLI_ASSOC);
     
-    // Fetch credit data
-    $credit_query = mysqli_query($con, "SELECT * FROM credit WHERE debt_name = '$selectedCompany'");
-    $credit_rows = mysqli_fetch_all($credit_query, MYSQLI_ASSOC);
+        // Merge debt and credit data
+        $data = array_merge($debt_rows, $credit_rows);
     
-    // Merge debt and credit data
-    $data = array_merge($debt_rows, $credit_rows);
-    
-    // Sort data by date
-    usort($data, function($a, $b) {
-        return strtotime($a['date']) - strtotime($b['date']);
-    });
-
-    // Initialize balance
-    $balance = 0;
-
-    // Display data
-    foreach ($data as $row) {
+        // Sort data by date
+        usort($data, function ($a, $b) {
+            return strtotime($a['date']) - strtotime($b['date']);
+        });
+      
+        // Initialize balance
+        $balance = 0;
+      
+        // Display data
+        foreach ($data as $row) {
   ?>
     <tr>
       <td><?php echo $row['date'] ?></td>

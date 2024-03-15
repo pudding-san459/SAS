@@ -1,5 +1,13 @@
 <?php
     include('sad_header.php');
+
+    session_start(); // Starting the session
+
+    // Check if the user is not logged in, redirect to the login page
+    if (!isset($_SESSION['admin_name'])) {
+        header("Location: ../ad_login.php");
+        exit(); // Ensure script stops here
+    }
 ?>
 
 <?php
@@ -21,26 +29,28 @@
       <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">DEBTORS AGING</h3>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
-  <center>
-    <input type="text" name="company" class="form-select" id="comp_name" list="companyList" style="width:80%;" placeholder="Type or Select Company" value="<?php if (isset($_GET['company'])) { $company = $_GET['company']; echo $company; }  ?>" required>
-    <datalist id="companyList" size="5">
-      <?php
-      // Iterate over existing company names and populate the datalist
-      foreach ($existingCompanies as $company) {
-          echo '<option value="' . $company . '">';
-      }
-      ?>
-    </datalist>
-    <br>
-  <a href="?company=<?php echo $company; ?>" class="btn btn-primary">Submit</a>
+<center>
+    <form method="get" action="sad_aging.php">
+        <input type="text" name="company" class="form-select" id="comp_name" list="companyList" style="width:80%;" placeholder="Type or Select Company" value="<?php echo isset($_GET['company']) ? htmlspecialchars($_GET['company']) : ''; ?>" required>
+        <datalist id="companyList" size="5">
+            <?php
+            // Iterate over existing company names and populate the datalist
+            foreach ($existingCompanies as $companyOption) {
+                echo '<option value="' . htmlspecialchars($companyOption) . '">';
+            }
+            ?>
+        </datalist>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </center>
 <br>
 

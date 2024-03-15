@@ -1,18 +1,16 @@
 <?php
     include('sad_header.php');
 
-    // Fetch existing companies from the database
-    $query = "SELECT DISTINCT debt_name FROM debt";
-    $result = mysqli_query($con, $query);
-  
-    $existingCompanies = array();
-    while ($row = mysqli_fetch_assoc($result)) {
-      $existingCompanies[] = $row['debt_name'];
+    session_start(); // Starting the session
+
+    // Check if the user is not logged in, redirect to the login page
+    if (!isset($_SESSION['admin_name'])) {
+        header("Location: ../ad_login.php");
+        exit(); // Ensure script stops here
     }
 
-    // Retrieve the company name from the URL parameter, if available
-    $company = isset($_GET['company']) ? $_GET['company'] : '';
 ?>
+<link rel="stylesheet" href="../../src/css/search.css">
 <header>
   <img src="../../img/Sas logo3.png" alt="" width="100px">
   <nav>
@@ -22,30 +20,20 @@
       <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">GENERAL ENTRY</h3>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <center>
-    <input type="text" name="company" class="form-select" id="comp_name" list="companyList" style="width:80%;" placeholder="Type or Select Company" value="<?php echo $company; ?>" required>
-    <datalist id="companyList" size="5">
-      <?php
-      // Iterate over existing company names and populate the datalist
-      foreach ($existingCompanies as $company) {
-          echo '<option value="' . $company . '">';
-      }
-      ?>
-    </datalist>
-    <br>
-  <a href="?company=<?php echo $company; ?>" class="btn btn-primary">Submit</a>
+    <input placeholder="Search the database...." type="text" name="text" id="myInput" onkeyup="myFunction()" class="search">
 </center>
 <br>
 
-<table class="table table-bordered general">
+<table class="table table-bordered general" id="myTable">
   <tr style="background-color: #00F7FF;">
     <th style="width: 140px;">Date</th>
     <th style="width: 100px;">Invoice</th>
@@ -54,20 +42,17 @@
     <th style="width: 200px">Description</th>
     <th style="width: 100px">Amount</th>
     <th style="width: 120px;">Invoice PDF</th>
-    <th colspan="2">Action</th>
+    <th>Action</th>
   </tr>
   <?php
-    // Fetch data from both debt and credit tables for the selected company, or all data if no company is selected
-    if (!empty($company)) {
-      $debt_query = mysqli_query($con, "SELECT * FROM debt WHERE debt_name = '$company'");
-      $credit_query = mysqli_query($con, "SELECT * FROM credit WHERE debt_name = '$company'");
-    } else {
-      $debt_query = mysqli_query($con, "SELECT * FROM debt");
-      $credit_query = mysqli_query($con, "SELECT * FROM credit");
-    }
+
+    $data = array(); // Initialize the data array outside the loop
+
+    // Fetch data from both debt and credit tables
+    $debt_query = mysqli_query($con, "SELECT * FROM debt");
+    $credit_query = mysqli_query($con, "SELECT * FROM credit");
 
     // Combine results from both queries into a single array
-    $data = array();
     while ($row = mysqli_fetch_assoc($debt_query)) {
         $data[] = $row;
     }
@@ -89,7 +74,6 @@
     <td><?php echo $row['description'] ?></td>
     <td><?php echo $row['amount'] ?></td>
     <td><a href="../invoice_pdf/<?php echo $row['debt_invoice']; ?>.pdf" target="_blank"><?php echo $row['debt_invoice']; ?>.pdf</a></td>
-    <td><button>Update</button></td>
     <td>
       <form action="inc/delete_entry.php" method="post">
           <input type="hidden" name="invoice" value="<?php echo $row['debt_invoice']; ?>">
@@ -106,7 +90,6 @@
     <td>-</td>
     <td><?php echo $row['amount']; ?></td>
     <td><a href="../payment_pdf/<?php echo $row['cred_invoice']; ?>.pdf" target="_blank"><?php echo $row['cred_invoice']; ?>.pdf</a></td>
-    <td><button>Update</button></td>
     <td>
         <form action="inc/delete_entry.php" method="post">
             <input type="hidden" name="invoice" value="<?php echo $row['cred_invoice']; ?>">
@@ -120,3 +103,36 @@
   ?>
 </table>
 </center>
+
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, j, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows except the first one (header row)
+  for (i = 1; i < tr.length; i++) {
+    // Reset display property for each row
+    tr[i].style.display = "";
+
+    // Loop through all table cells in current row
+    var found = false;
+    for (j = 0; j < tr[i].cells.length; j++) {
+      td = tr[i].cells[j];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          found = true;
+          break;  // Break loop if match found in any cell
+        }
+      }
+    }
+    if (!found) {
+      tr[i].style.display = "none";  // Hide row if no match found in any cell
+    }
+  }
+}
+</script>

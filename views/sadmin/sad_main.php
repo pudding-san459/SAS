@@ -1,5 +1,13 @@
 <?php
     include('sad_header.php');
+
+    session_start(); // Starting the session
+
+    // Check if the user is not logged in, redirect to the login page
+    if (!isset($_SESSION['admin_name'])) {
+        header("Location: ../ad_login.php");
+        exit(); // Ensure script stops here
+    }
 ?>
 
 <header>
@@ -11,9 +19,9 @@
       <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">MAIN MENU</h3>

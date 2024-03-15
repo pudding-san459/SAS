@@ -1,5 +1,5 @@
 <?php
-    include('sad_header.php');
+    include('ad_header.php');
 
     session_start(); // Starting the session
 
@@ -14,9 +14,8 @@
   <img src="../../img/Sas logo3.png" alt="" width="100px">
   <nav>
     <ul>
-      <li class="active"><a href="sad_main.php" class="nav-link">Main</a></li>
-      <li><a href="sad_user.php" class="nav-link">User</a></li>
-      <li><a href="sad_admin.php" class="nav-link">Admin</a></li>
+      <li class="active"><a href="ad_main.php" class="nav-link">Main</a></li>
+      <li><a href="ad_user.php" class="nav-link">User</a></li>
     </ul>
   </nav>
   <a href="inc/logout.php" class="logout">
@@ -24,7 +23,7 @@
   </a>
 </header>
 
-<h3 class="title">INVOICE CREATION</h3>
+<h3 class="title">RECEIPT CREATION</h3>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <?php
@@ -35,9 +34,17 @@
   while ($row = mysqli_fetch_assoc($result)) {
     $existingCompanies[] = $row['debt_name'];
   }
+
+  $query = "SELECT DISTINCT debt_invoice FROM debt WHERE status IN ('CURRENT', 'PASS DUE')";
+  $result = mysqli_query($con, $query);
+  
+  $existingInvoice = array();
+  while ($row = mysqli_fetch_assoc($result)) {
+    $existingInvoice[] = $row['debt_invoice'];
+  }
 ?>
 
-<form action="sad_inv_pdf.php" method="POST">
+<form action="ad_pay_pdf.php" method="POST">
 <div class="inv-card">
   <div class="card" style="width: 50%;">
     <div class="card-body">
@@ -58,10 +65,17 @@
           </td>
         </tr>
         <tr>
-          <td style="text-align: start;"><p>Company Address</p></td>
+          <td style="text-align: start;"><p>Payment of</p></td>
           <td>:</td>
           <td style="text-align:start;">
-            <textarea type="text" name="comp_address" style="width:90%;" required></textarea>
+          <input type="text" name="comp_inv" id="comp_inv" list="invoiceList" style="width:90%;" required>
+            <datalist id="invoiceList" size="5">
+              <?php
+              // Iterate over existing debt invoices and populate the datalist
+              foreach ($existingInvoice as $invoice) {
+                  echo '<option value="' . $invoice . '">';
+              }
+              ?>
           </td>
         </tr>
         <tr>
@@ -70,41 +84,11 @@
           <td style="text-align:start;"><input type="date" name="date" style="width:50%;" required></td>
         </tr>
         <tr>
-          <td style="text-align: start;"><p>Terms (Days)</p></td>
+          <td style="text-align: start;"><p>Amount (RM)</p></td>
           <td>:</td>
-          <td style="text-align:start;"><input type="text" name="terms" style="width:90%;" required></td>
-        </tr>
-        <tr>
-          <td style="text-align: start;"><p>Description</p></td>
-          <td>:</td>
-          <td style="text-align:start;"><textarea type="text" name="desc" style="width:90%;" required></textarea></td>
+          <td style="text-align:start;"><input type="number" name="payment" style="width:90%;" required></td>
         </tr>
       </table>
-      <br>
-      <center>
-
-        <table style="border: 2px solid black; width: 100%; border-spacing: 0;">
-        <tr style="text-align:center;">
-          <th>No.</th>
-          <th>Particular</th>
-          <th>Qtty</th>
-          <th>Price/Unit</th>
-        </tr>
-        <?php
-          for ($i=0; $i < 5; $i++) { 
-        ?>
-        <tr>
-          <td><input type="text" style="width: 40px; text-align: center;" value="<?php echo $i+1; ?>."></td>
-          <td><input type="text" style="width: 415px;" name="particular<?php echo $i+1; ?>"></td>
-          <td><input type="text" style="width: 50px;" name="qtty<?php echo $i+1; ?>"></td>
-          <td><input type="text" style="width: 125px;" name="price<?php echo $i+1; ?>"></td>
-        </tr>
-        <?php
-          }
-        ?>
-        </table>
-      </center>
-      <br>
       <button type="submit" name="view">View Invoice</button>
     </div>
   </div>

@@ -26,8 +26,10 @@ if (isset($_POST['delete_debt']) || isset($_POST['delete_credit'])) {
         $debt_result = mysqli_query($con, $debt_amount_query);
         $debt_row = mysqli_fetch_assoc($debt_result);
         $debt_amount = $debt_row['amount'];
+        $debt_status = $debt_row['status'];
 
         $new_amount = $debt_amount + $credit_amount;
+
 
         // Update the corresponding debt entry with the credit amount
         $update_debt_query = "UPDATE debt SET amount = '$new_amount' WHERE debt_invoice = '$credit_payment'";

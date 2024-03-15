@@ -57,6 +57,7 @@ body {
     outline: none;
     display: flex;
     justify-content: center;
+    text-decoration: none;
     align-items: center;
     background-color: #c3ccd7;
     padding: 0.4em 0.8em;
@@ -69,6 +70,7 @@ body {
   
   .logout p {
     margin: 0;
+    text-decoration: none;
   }
   
   .logout:hover {
