@@ -1,5 +1,11 @@
 <?php
     include('user_header.php');
+    
+    session_start();
+    $companyname = $_SESSION['company_name'];
+
+    $query = mysqli_query($con, "SELECT SUM(amount) AS totalDebt FROM debt WHERE debt_name = '$companyname'");
+    $row = mysqli_fetch_array($query);
 ?>
 
 <header>
@@ -10,19 +16,17 @@
       <li><a href="user_profile.php" class="nav-link">Profile</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">MAIN MENU</h3>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <div class="d-flex justify-content-center" style=" margin-bottom: 3vh;">
-    <h4><b>REPORT</b></h4>
+    <h4><b>SHOWING REPORT FOR <?php echo strtoupper($companyname); ?></b></h4>
 </div>
-
-
 
 <div class="main-button d-flex justify-content-center" style="margin-bottom: 5vh;">
     <div class="d-flex flex-row" style="height: auto; width: 1000px; gap: 10vh;">
@@ -34,6 +38,6 @@
 
 <div class="d-flex justify-content-center">
   <div class="info-user">
-    <h5>Total Debt Balance : RM 43,000.00</h5>
+    <h5>Total Debt Balance : <b>RM <?php echo number_format($row['totalDebt'], 2); ?></b></h5>
   </div>
 </div>

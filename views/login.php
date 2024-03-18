@@ -46,6 +46,7 @@
       } else if( $data['status'] == "approved"){
           if( $user == $data['username'] && $pass == $data['password']){
             $_SESSION['company_name'] = $data['company_name'];
+            $_SESSION['id_user'] = $data['id_user'];
             $_SESSION['user_email'] = $data['user_email'];
             $_SESSION['company_tel'] = $data['company_tel'];
             $_SESSION['username'] = $data['username'];

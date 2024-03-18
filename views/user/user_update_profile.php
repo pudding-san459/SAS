@@ -11,9 +11,9 @@
       <li class="active"><a href="user_profile.php" class="nav-link">Profile</a></li>
     </ul>
   </nav>
-  <button type="submit" class="logout">
+  <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </button>
+  </a>
 </header>
 
 <h3 class="title">USER PROFILE</h3>

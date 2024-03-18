@@ -1,6 +1,7 @@
 <?php 
 
     include('../../src/config.php');
+    session_start();
 
 
     if(isset($_POST['del_user'])){
@@ -10,7 +11,7 @@
     
         if ($query) {
             echo "<script>alert('User deletion has been successfull');
-            window.location='ad_user.php';</script>";
+            window.location='../ad_user.php';</script>";
         }
     }
 

@@ -1,5 +1,6 @@
 <?php 
     include ("../../../src/config.php");
+    session_start();
 
     if (isset($_POST["reject"])) {
         $id = $_POST['id'];
@@ -11,7 +12,7 @@
         } else {
             echo "<script> alert('The user has been rejected.'); 
             window.location='../sad_user.php'; </script>";
-            exit; // Stop further execution
+            exit();
         }
     }
 

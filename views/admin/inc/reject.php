@@ -1,5 +1,6 @@
 <?php 
     include ("../../../src/config.php");
+    session_start();
 
     if (isset($_POST["reject"])) {
         $id = $_POST['id'];

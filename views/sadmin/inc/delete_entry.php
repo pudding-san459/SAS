@@ -1,6 +1,7 @@
 <?php
 // Include database connection
 include('../../../src/config.php');
+session_start();
 
 // Check if the form is submitted
 if (isset($_POST['delete_debt']) || isset($_POST['delete_credit'])) {

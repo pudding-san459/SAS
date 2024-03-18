@@ -23,7 +23,8 @@ body {
     width: 100%;
     background-color: #dbe1e8;
     padding: 2vh;
-    border-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
   }
 
   nav ul {
