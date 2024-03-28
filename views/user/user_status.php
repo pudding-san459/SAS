@@ -108,7 +108,7 @@
     $grandTotal = number_format((double)$tempTotal, 2);
     } 
   ?>
-  <tr style="background-color: #76885B; color: white; border-color: black;">
+  <tr style="background-color: #76885B; color: white; border-color: black;" >
     <th colspan="4" style="text-align: end; border-right: none; "><b>Grand Total</b></th>
     <th style="border-left: none; border-right: none;"><?php echo $grandTotal; ?></th>
     <th style="border-left: none;"></th>
