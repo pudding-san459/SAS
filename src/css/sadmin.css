@@ -21,7 +21,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background-color: #dbe1e8;
+    background-color: #DDDDDD;
     padding: 2vh;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -39,18 +39,18 @@ body {
   }
   
   nav ul li .nav-link:hover {
-    color: #0460bc;
+    color: #627254;
     transition: all 0.3s;
   }
   
   li.active {
     font-weight: bold;
-    border-bottom: 2px solid #0460bc;
+    border-bottom: 2px solid #627254;
   }
   
   .nav-link.active {
     font-weight: bold;
-    border-bottom: 2px solid #0460bc;
+    border-bottom: 2px solid #627254;
   }
   
   .logout {
@@ -60,12 +60,12 @@ body {
     justify-content: center;
     text-decoration: none;
     align-items: center;
-    background-color: #c3ccd7;
+    background-color: #76885B;
     padding: 0.4em 0.8em;
     cursor: pointer;
     gap: 0.4em;
     border-radius: 0.4em;
-    color: red;
+    color: #FF8080;
     font-size: 1rem;
   }
   
@@ -75,8 +75,7 @@ body {
   }
   
   .logout:hover {
-    color: #fff;
-    background-color: #0460bc;
+    color: white;
   }
 
   .general{
@@ -108,18 +107,21 @@ body {
   }
 
   .title{
-    background-color: #DCEEF2;
+    background-color: #76885B;
     padding: 10px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     margin-top: 5vh;
     width: 80%;
+    color: white;
   }
 
   .main-button2{
     padding: 20px; 
     width: 80%;
+    background-color: #627254;
+    color: white;
   }
 
   .main-button-div{

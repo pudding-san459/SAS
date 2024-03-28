@@ -29,11 +29,17 @@
 
 <?php
 
-  $query = mysqli_query($con,"SELECT * FROM user");
+  $sql_pending = "SELECT * FROM user WHERE status = 'pending'";
+  $sql_approved = "SELECT * FROM user WHERE status = 'approved'";
+  $sql_rejected = "SELECT * FROM user WHERE status = 'rejected'";
+
+  $result_pending = mysqli_query($con, "$sql_pending");
+  $result_approved = mysqli_query($con, "$sql_approved");
+  $result_rejected = mysqli_query($con, "$sql_rejected");
 ?>
 <h4 style="text-align: center;">Pending Approval</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>
@@ -42,11 +48,9 @@
     <th colspan="3">Action</th>
   </tr>
   <?php
-    while ($data=mysqli_fetch_array($query)) {
-      $dataArray[] = $data;
-    }
-    foreach ($dataArray as $data):
-      if ($data['status'] == "pending"){
+    $num_rows = mysqli_num_rows($result_pending);
+    if ($num_rows > 0) {
+      while ($data = mysqli_fetch_assoc($result_pending)) {
   ?>
   <tr>
     <td><?php echo $data['company_name'] ?></td>
@@ -58,29 +62,31 @@
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="id">
       <td><button type="submit" name="approve" class="btn btn-success">Approve</button></td>
     </form>
-    <form action="increject.php" method="POST">
+    <form action="inc/reject.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="id">
-      <td><button type="submit" name="uppage" class="btn btn-danger">Reject</button></td>
+      <td><button type="submit" name="reject" class="btn btn-danger">Reject</button></td>
     </form>
     <form action="inc/delete.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="iduser">
       <td><button class="btn btn-dark" name="del_user">Delete</button></td>
     </form>
   </tr>
-  <?php  } else{ ?>
+  <?php 
+    }
+  } else {  ?>
   
   <tr>
-    <td colspan="6">No Pending User</td>
+    <td colspan="8">No Pending User</td>
   </tr>
 
-<?php } endforeach; ?>
+<?php } ?>
 </table>
 <br><br>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <h4 style="text-align: center;">Approved User</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>
@@ -89,8 +95,9 @@
     <th>Action</th>
   </tr>
   <?php
-    foreach ($dataArray as $data):
-      if ($data['status'] == "approved"){
+    $num_rows = mysqli_num_rows($result_approved);
+    if ($num_rows > 0) {
+      while ($data = mysqli_fetch_assoc($result_approved)) {
   ?>
   <tr>
     <td><?php echo $data['company_name'] ?></td>
@@ -98,25 +105,27 @@
     <td><?php echo $data['password'] ?></td>
     <td><?php echo $data['user_email'] ?></td>
     <td><?php echo $data['company_tel'] ?></td>
-    <form action="ad_delete.php" method="POST">
+    <form action="inc/delete.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="iduser">
       <td><button class="btn btn-danger" name="del_user">Delete</button></td>
     </form>
   </tr>
-  <?php  } else{ ?>
-  
+  <?php
+    } 
+  } else { 
+  ?>
     <tr>
-      <td colspan="6">No Approved User</td>
+      <td colspan="8">No Approved User</td>
     </tr>
 
-  <?php } endforeach; ?>
+  <?php } ?>
 </table>
 <br><br>
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <h4 style="text-align: center;">Rejected User</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>
@@ -125,8 +134,9 @@
     <th>Action</th>
   </tr>
   <?php
-    foreach ($dataArray as $data):
-      if ($data['status'] == "rejected"){
+    $num_rows = mysqli_num_rows($result_rejected);
+    if ($num_rows > 0) {
+      while ($data = mysqli_fetch_assoc($result_rejected)) {
   ?>
   <tr>
     <td><?php echo $data['company_name'] ?></td>
@@ -134,16 +144,18 @@
     <td><?php echo $data['password'] ?></td>
     <td><?php echo $data['user_email'] ?></td>
     <td><?php echo $data['company_tel'] ?></td>
-    <form action="ad_delete.php" method="POST">
+    <form action="inc/delete.php" method="POST">
       <input type="hidden" value="<?php echo $data['id_user'] ?>" name="iduser">
       <td><button class="btn btn-danger" name="del_user">Delete</button></td>
     </form>
   </tr>
-  <?php  } else{ ?>
+  <?php
+    }
+  } else {  ?>
   
   <tr>
-    <td colspan="6">No Rejected User</td>
+    <td colspan="8">No Rejected User</td>
   </tr>
 
-<?php } endforeach; ?>
+<?php } ?>
 </table>

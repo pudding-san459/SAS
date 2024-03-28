@@ -33,7 +33,7 @@
 <br>
 
 <table class="table table-bordered general" id="myTable">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 140px;">Date</th>
     <th style="width: 100px;">Invoice</th>
     <th style="width: 130px;">Payment Of</th>
@@ -41,7 +41,6 @@
     <th style="width: 200px">Description</th>
     <th style="width: 100px">Amount</th>
     <th style="width: 120px;">Invoice PDF</th>
-    <th>Action</th>
   </tr>
   <?php
 
@@ -73,12 +72,6 @@
     <td><?php echo $row['description'] ?></td>
     <td><?php echo $row['amount'] ?></td>
     <td><a href="../invoice_pdf/<?php echo $row['debt_invoice']; ?>.pdf" target="_blank"><?php echo $row['debt_invoice']; ?>.pdf</a></td>
-    <td>
-      <form action="inc/delete_entry.php" method="post">
-          <input type="hidden" name="invoice" value="<?php echo $row['debt_invoice']; ?>">
-          <button type="submit" name="delete_debt">Delete</button>
-      </form>
-    </td>
     <?php
       } elseif (isset($row['cred_invoice'])) {
     ?>
@@ -88,13 +81,7 @@
     <td><?php echo $row['debt_name']; ?></td>
     <td>-</td>
     <td><?php echo $row['amount']; ?></td>
-    <td><a href="../payment_pdf/<?php echo $row['cred_invoice']; ?>.pdf" target="_blank"><?php echo $row['cred_invoice']; ?>.pdf</a></td>
-    <td>
-        <form action="inc/delete_entry.php" method="post">
-            <input type="hidden" name="invoice" value="<?php echo $row['cred_invoice']; ?>">
-            <button type="submit" name="delete_credit">Delete</button>
-        </form>
-    </td>
+    <td><a href="../payment_pdf/<?php echo $row['cred_invoice']; ?>.pdf" target="_blank"><?php echo $row['cred_invoice']; ?>.pdf</a></td> 
   </tr>
   <?php
       }

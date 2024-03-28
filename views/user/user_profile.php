@@ -32,36 +32,30 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td style="width: 240px;">Company Name</td>
+                            <td style="width: 180px;">Company Name</td>
                             <td>:</td>
                             <td><?php echo $row['company_name']; ?></td>
                         </tr>
                         <tr>
-                            <td style="width: 240px;">Company Email</td>
+                            <td>Email</td>
                             <td>:</td>
                             <td><?php echo $row['user_email']; ?></td>
                         </tr>
                         <tr>
-                            <td style="width: 240px;">Company Phone Number</td>
+                            <td>Phone Number</td>
                             <td>:</td>
                             <td>+6<?php echo $row['company_tel']; ?></td>
                         </tr>
                         <tr>
-                            <td style="width: 240px;">Username</td>
+                            <td>Username</td>
                             <td>:</td>
                             <td><?php echo $row['username']; ?></td>
                         </tr>
                         <tr>
-                            <td><a href="user_update_profile.php" class="btn btn-primary">Update Profile</a></td>
+                            <td>Password</td>
+                            <td>:</td>
+                            <td><?php echo $row['password']; ?></td>
                         </tr>
-                        <!-- <form method="POST">
-                        <tr>
-                        
-                            <td><input type="password" placeholder="Password" name="password" required></td>
-                            <td></td>
-                            <td><input type="password" placeholder="Comfirm Password" name="password" required></td>
-                        </tr>
-                        </form> -->
                     </tbody>
                 </table>
             </div>

@@ -1,6 +1,6 @@
 <?php 
 
-    include('../../src/config.php');
+    include('../../../src/config.php');
     session_start();
 
 

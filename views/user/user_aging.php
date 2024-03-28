@@ -31,7 +31,7 @@
 <br>
 
 <table class="table table-bordered aging">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 100px;">Invoice</th>
     <th style="width: 170px">Amount due</th>
     <th style="width: 180px">Past Due 1 - 30 days</th>
@@ -85,7 +85,7 @@
   }
   ?>
   <tr>
-    <th colspan="2" style="text-align: end; background-color: #00F7FF;">Total:</th>
+    <th colspan="2" style="text-align: end; background-color: #76885B; color: white; border-color: black;">Total:</th>
     <th class="text-end" style="background-color: #FFF3F3"><?php echo number_format($totalPastDue1to30, 2); ?></th>
     <th class="text-end" style="background-color: #FFE6E7"><?php echo number_format($totalPastDue31to60, 2); ?></th>
     <th class="text-end" style="background-color: #FFDCDC"><?php echo number_format($totalPastDue61to90, 2); ?></th>

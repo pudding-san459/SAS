@@ -34,7 +34,7 @@
 <br>
 
 <table class="table table-bordered general" id="myTable">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 140px;">Date</th>
     <th style="width: 100px;">Invoice</th>
     <th style="width: 130px;">Payment Of</th>
@@ -77,7 +77,7 @@
     <td>
       <form action="inc/delete_entry.php" method="post">
           <input type="hidden" name="invoice" value="<?php echo $row['debt_invoice']; ?>">
-          <button type="submit" name="delete_debt">Delete</button>
+          <button type="submit" name="delete_debt" class="btn btn-danger">Delete</button>
       </form>
     </td>
     <?php
@@ -93,7 +93,7 @@
     <td>
         <form action="inc/delete_entry.php" method="post">
             <input type="hidden" name="invoice" value="<?php echo $row['cred_invoice']; ?>">
-            <button type="submit" name="delete_credit">Delete</button>
+            <button type="submit" name="delete_credit" class="btn btn-danger">Delete</button>
         </form>
     </td>
   </tr>

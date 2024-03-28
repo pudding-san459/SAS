@@ -31,7 +31,7 @@
   </nav>
   <a href="inc/logout.php" class="logout">
     <p>LogOut</p>
-  </a>
+  </a> 
 </header>
 
 <h3 class="title">DEBTORS AGING</h3>
@@ -49,7 +49,7 @@
             ?>
         </datalist>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn" style="background-color: #627254; color: white;">Submit</button>
     </form>
 </center>
 <br>
@@ -57,7 +57,7 @@
 
 
 <table class="table table-bordered aging">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 100px;">Invoice</th>
     <th style="width: 170px">Amount due</th>
     <th style="width: 180px">Past Due 1 - 30 days</th>
@@ -113,10 +113,18 @@
   </tr>
   <?php
         }
-    }
+    } else {
+  ?>
+      
+          <tr>
+            <td colspan="7">Select a Company to Display Information</td>
+          </tr>
+      
+  <?php
+      }
   ?>
   <tr>
-    <th colspan="2" style="text-align: end; background-color: #00F7FF;">Total:</th>
+    <th colspan="2" style="text-align: end; background-color: #76885B; color: white; border-color: black;">Total:</th>
     <th class="text-end" style="background-color: #FFF3F3"><?php echo number_format($totalPastDue1to30, 2); ?></th>
     <th class="text-end" style="background-color: #FFE6E7"><?php echo number_format($totalPastDue31to60, 2); ?></th>
     <th class="text-end" style="background-color: #FFDCDC"><?php echo number_format($totalPastDue61to90, 2); ?></th>

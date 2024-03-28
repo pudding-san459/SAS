@@ -40,7 +40,7 @@
 ?>
 <h4 style="text-align: center;">Pending Approval</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>
@@ -87,7 +87,7 @@
 
 <h4 style="text-align: center;">Approved User</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>
@@ -126,7 +126,7 @@
 
 <h4 style="text-align: center;">Rejected User</h4>
 <table class="table table-bordered ledger" style="width: 90%;">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 300px;">Company Name</th>
     <th style="width: 200px;">Username</th>
     <th style="width: 200px;">Password</th>

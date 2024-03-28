@@ -37,7 +37,7 @@
 
 
 <table class="table table-bordered ledger">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 150px;">Date</th>
     <th style="width: 100px;">Invoice</th>
     <th style="width: 500px">Debtor</th>
@@ -97,8 +97,8 @@
     $grandTotal = number_format((double)$tempTotal, 2);
     } 
   ?>
-  <tr style="background-color: #00F7FF;">
-    <th colspan="4" style="text-align: end; border-right: none; "><b>Grand Total</b></th>
+  <tr style="background-color: #76885B; color: white; border-color: black;">
+    <th colspan="4" style="text-align: end; border-right: none; "><b>Grand Total :</b></th>
     <th style="border-left: none; border-right: none;"><?php echo $grandTotal; ?></th>
     <th style="border-left: none;"></th>
   </tr>

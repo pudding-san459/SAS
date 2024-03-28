@@ -49,12 +49,12 @@
             ?>
         </datalist>
         <br>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn" style="background-color: #627254; color: white;">Submit</button>
     </form>
 </center>
 <br>
 <table class="table table-bordered ledger">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 120px;">Date</th>
     <th style="width: 500px">Description</th>
     <th style="width: 125px">Debit</th>
@@ -108,6 +108,14 @@
     </tr>
 <?php
 }
+} else {
+?>
+
+    <tr>
+      <td colspan="5">Select a Company to Display Information</td>
+    </tr>
+
+<?php
 }
 ?>
 </table>

@@ -32,7 +32,7 @@
 </center>
 <br>
 <table class="table table-bordered general" id="myTable">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 140px;">Date</th>
     <th style="width: 100px;">Invoice</th>
     <th style="width: 350px;">Debtors</th>

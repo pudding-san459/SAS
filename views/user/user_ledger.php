@@ -31,7 +31,7 @@
 <br>
 
 <table class="table table-bordered ledger">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 120px;">Date</th>
     <th style="width: 500px">Description</th>
     <th style="width: 125px">Debit</th>

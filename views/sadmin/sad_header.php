@@ -11,6 +11,6 @@
     <link rel="stylesheet" href="../../src/css/sadmin.css">
     <title>Super Admin</title>
 </head>
-<body>
+<body style="background-color: #EEEEEE;">
 
 

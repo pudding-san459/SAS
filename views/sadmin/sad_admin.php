@@ -38,7 +38,7 @@
 
 
 <table class="table table-bordered ledger">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color:white; border-color: black;">
     <th style="width: 40%;">Name</th>
     <th style="width: 25%;">Username</th>
     <th style="width: 25%;">Password</th>
@@ -63,5 +63,5 @@
   ?>
 </table>
 <center>
-  <a href="sad_addadmin.php" class="btn btn-primary">Add user</a>
+  <a href="sad_addadmin.php" class="btn" style="background-color: #627254; color: white;">Add user</a>
 </center>

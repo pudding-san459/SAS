@@ -89,7 +89,7 @@
           <td style="text-align:start;"><input type="number" name="payment" style="width:90%;" required></td>
         </tr>
       </table>
-      <button type="submit" name="view">View Invoice</button>
+      <button type="submit" name="view" class="btn" style="background-color: #627254; color: white;">View Invoice</button>
     </div>
   </div>
 </div>

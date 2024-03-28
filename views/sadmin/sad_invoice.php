@@ -105,7 +105,7 @@
         </table>
       </center>
       <br>
-      <button type="submit" name="view">View Invoice</button>
+      <button type="submit" name="view"  class="btn" style="background-color: #627254; color: white;">View Invoice</button>
     </div>
   </div>
 </div>

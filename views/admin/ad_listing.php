@@ -29,7 +29,7 @@
 <hr style="width: 80%; margin-left: auto; margin-right: auto;">
 
 <table class="table table-bordered ledger">
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th style="width: 100px;">No.</th>
     <th style="width: 700px">Debtors</th>
     <th style="width: 200px">Amount Due</th>
@@ -54,7 +54,7 @@
   $subTotal = $tempTotal;
   }
   ?>
-  <tr style="background-color: #00F7FF;">
+  <tr style="background-color: #76885B; color: white; border-color: black;">
     <th colspan="2" style="text-align: end;">Total:</td>
     <th>RM <?php echo  number_format($subTotal, 2); ?></td>
   </tr>
